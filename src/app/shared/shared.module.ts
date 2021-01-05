@@ -14,7 +14,7 @@ import {FileUploadModule} from 'primeng/fileupload';
     CommonModule,
     CalendarModule,
     FileUploadModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     ReactiveFormsModule,

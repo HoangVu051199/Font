@@ -1,6 +1,9 @@
 import { Component, OnInit, Injector } from '@angular/core';
+import { FormBuilder} from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/lib/base-component';
+import { CartService } from 'src/app/lib/cart.service';
+
 
 @Component({
   selector: 'app-product',
@@ -8,28 +11,30 @@ import { BaseComponent } from 'src/app/lib/base-component';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent extends BaseComponent implements OnInit{
-  public monan:any=[];
-  loai: any;
-  ten_loai:any;
-  constructor(injector: Injector) {
+
+  public monans:any;
+  public listCart: any;
+  public item:any;
+
+  constructor(private fb: FormBuilder, injector: Injector, private service: CartService) {
     super(injector);
   }
 
   ngOnInit(): void {
     //this.refserProCategory1();
    //this.refserProCategory();
-    this.refserLoaiList();
+    this.refserMonanList();
   }
-  // refserProCategory1()
-  // {
-  //   this.monan=[];
-  //   this._route.params.subscribe(params => {
-  //     let id = params['id'];
-  //     this._api.get('/api/Monan/get-by-loai/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((data: any) => {
-  //       this.monan = data;
-  //     });
-  //   });
-  // }
+  refserMonan1()
+  {
+    this.monans=[];
+    this._route.params.subscribe(params => {
+      let id = params['id'];
+      this._api.get('/api/Monan/get-by-id/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((data: any) => {
+        this.monans = data;
+      });
+    });
+  }
   // refserProCategory()
   // {
   //   this.loai=[];
@@ -42,9 +47,15 @@ export class ProductComponent extends BaseComponent implements OnInit{
   //     });
   //   });
   // }
-  refserLoaiList(){
-    this._api.get("/api/monan/get-all").subscribe(data =>{
-      this.monan=data;
-    })
+  refserMonanList(){
+    this._api.get('/api/monan/get-all').subscribe(data =>{
+      this.monans =data;
+    });
   }
+  addCart() {
+    this.listCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+    this.listCart.push(this.item);
+    localStorage.setItem('cart', JSON.stringify(this.listCart));
+    alert('Thêm thành công');
+}
 }
