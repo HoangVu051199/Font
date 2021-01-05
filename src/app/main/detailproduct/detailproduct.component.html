@@ -26,14 +26,14 @@
                 </div>
              </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" *ngIf="item">
              <div class="shop-detail-right">
                 <span class="badge badge-success">50% OFF</span>
-                <h2>SaveMore Corn Flakes (Pouch)</h2>
+                <h2>{{item.ten_mon}}</h2>
                 <h6><strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>
                 <p class="regular-price"><i class="mdi mdi-tag-outline"></i> MRP : $800.99</p>
-                <p class="offer-price mb-0">Discounted price : <span class="text-success">$450.99</span></p>
-                <a href="checkout.html"><button type="button" class="btn btn-secondary btn-lg"><i class="mdi mdi-cart-outline"></i> Add To Cart</button> </a>
+                <p class="offer-price mb-0">Discounted price : {{item.gia}} <span class="text-success"></span></p>
+                <a href="checkout.html"><button type="button" (click)="addCart()" class="btn btn-secondary btn-lg" ><i class="mdi mdi-cart-outline"></i> Add To Cart</button> </a>
                 <div class="short-description">
                    <h5>
                       Quick Overview

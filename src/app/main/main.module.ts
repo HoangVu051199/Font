@@ -24,7 +24,7 @@ export const mainRoutes: Routes = [
         component: ProductComponent,
       },
       {
-        path: 'detail',
+        path: 'detail/:id',
         component: DetailproductComponent,
       },
       {

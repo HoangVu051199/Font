@@ -12,50 +12,48 @@ import { CartService } from 'src/app/lib/cart.service';
 })
 export class ProductComponent extends BaseComponent implements OnInit{
 
-  public monans:any;
+  public monans: any;
   public listCart: any;
-  public item:any;
+  public item: any;
 
   constructor(private fb: FormBuilder, injector: Injector, private service: CartService) {
     super(injector);
   }
 
   ngOnInit(): void {
-    //this.refserProCategory1();
-   //this.refserProCategory();
     this.refserMonanList();
   }
-  refserMonan1()
-  {
-    this.monans=[];
-    this._route.params.subscribe(params => {
-      let id = params['id'];
-      this._api.get('/api/Monan/get-by-id/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((data: any) => {
-        this.monans = data;
-      });
-    });
-  }
-  // refserProCategory()
-  // {
-  //   this.loai=[];
-  //   this._route.params.subscribe(params => {
-  //     let id = params['ma_loai'];
-  //     let ten_loai = params['ten_loai'];
-  //     this._service.get('/api/loai/get-by-id/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((data: any) => {
-  //       this.loai = data;
-  //       this.ten_loai = ten_loai;
-  //     });
-  //   });
-  // }
+
   refserMonanList(){
-    this._api.get('/api/monan/get-all').subscribe(data =>{
-      this.monans =data;
+    this._api.get('/api/monan/get-all').subscribe(data => {
+      this.monans = data;
     });
   }
-  addCart() {
+
+  addCart(monan) {
+
     this.listCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-    this.listCart.push(this.item);
+    if (this.listCart.length)
+    {
+      this.listCart.map( (vl) => {
+        if (vl.ma_mon == monan.ma_mon)
+          {
+          vl.size ++
+        }
+
+        else {
+          this.listCart.push(monan);
+        }
+
+        // vl.size * vl.price
+
+        return vl
+      })
+    } else {
+      this.listCart.push(monan);
+    }
+
     localStorage.setItem('cart', JSON.stringify(this.listCart));
     alert('Thêm thành công');
-}
+  }
 }
