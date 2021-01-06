@@ -47,7 +47,7 @@
                    </div>
                    <div class="product-footer">
                       <button type="button" (click)="addCart(item)" class="btn btn-secondary btn-sm float-right"><i class="mdi mdi-cart-outline"></i> Add To Cart</button>
-                      <p class="offer-price mb-0">{{item.gia}} <i class="mdi mdi-tag-outline"></i><br><span class="regular-price">{{item.gia}}</span></p>
+                      <p class="offer-price mb-0">{{item.gia | currency: 'VND'}} <i class="mdi mdi-tag-outline"></i><br><span class="regular-price">{{item.gia}}</span></p>
                    </div>
              </div>
           </div>

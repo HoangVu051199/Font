@@ -11,9 +11,9 @@ import { DetailproductComponent } from './detailproduct/detailproduct.component'
 import { CartComponent } from './cart/cart.component';
 import { BookComponent } from './book/book.component';
 import { BlogComponent } from './blog/blog.component';
-import { CategoryComponent } from './category/category.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { MenuComponent } from './menu/menu.component';
 export const mainRoutes: Routes = [
   {
     path: '',
@@ -36,8 +36,8 @@ export const mainRoutes: Routes = [
         component: BookComponent,
       },
       {
-        path: 'category',
-        component: CategoryComponent,
+        path: 'menu',
+        component: MenuComponent,
       },
       {
         path: 'blog',
@@ -64,9 +64,9 @@ export const mainRoutes: Routes = [
     DetailproductComponent,
     BookComponent,
     BlogComponent,
-    CategoryComponent,
     ContactComponent,
     AboutComponent,
+    MenuComponent,
   ],
   imports: [SharedModule, CommonModule, RouterModule.forChild(mainRoutes)],
 })
