@@ -14,6 +14,7 @@ import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
+import { CategoryComponent } from './category/category.component';
 export const mainRoutes: Routes = [
   {
     path: '',
@@ -51,6 +52,10 @@ export const mainRoutes: Routes = [
         path: 'about',
         component: AboutComponent,
       },
+      {
+        path: 'category/:id',
+        component: CategoryComponent,
+      },
     ],
   },
 ];
@@ -67,6 +72,8 @@ export const mainRoutes: Routes = [
     ContactComponent,
     AboutComponent,
     MenuComponent,
+    CartComponent,
+    CategoryComponent
   ],
   imports: [SharedModule, CommonModule, RouterModule.forChild(mainRoutes)],
 })

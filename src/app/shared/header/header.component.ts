@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
+import {BaseComponent} from '../../lib/base-component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  listCart: any;
-  total: any;
-  constructor() { }
+export class HeaderComponent extends BaseComponent implements OnInit {
+
+  items:any;
+  total:any;
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
   ngOnInit(): void {
-    this.getCart();
+    this._cart.items.subscribe((res) => {
+      this.items = res;
+      this.total = 0;
+      for(let x of this.items){
+        x.money = x.quantity * x.price;
+        this.total += x.quantity * x.price;
+      }
+    });
   }
-  getCart() {
-    this.listCart = JSON.parse(localStorage.getItem('cart'));
-    this.listCart.map ((vl) => {
-      this.total += vl.size * vl.price;
-    })
-
+  clearCart() {
+    this._cart.clearCart();
+    alert('Bạn muốn xóa sản phẩm này ra khỏi giỏ hàng');
+  }
+  addQty(item, quantity){
+    item.quantity =  quantity;
+    item.money =  Number.parseInt(item.quantity) *  item.price;
+    this._cart.addQty(item);
   }
 }

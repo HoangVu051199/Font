@@ -7,12 +7,11 @@
                    <table class="table cart_summary">
                       <thead>
                          <tr>
-                            <th class="cart_product">Product</th>
-                            <th>Description</th>
-                            <th>Avail.</th>
-                            <th>Unit price</th>
-                            <th>Qty</th>
-                            <th>Total</th>
+                            <th class="cart_product">Hình ảnh</th>
+                            <th>Tên Sản Phẩm </th>
+                            <th>Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng Tiền</th>
                             <th class="action"><i class="mdi mdi-delete-forever"></i></th>
                          </tr>
                       </thead>
@@ -23,12 +22,12 @@
                                <h5 class="product-name"><a href="#">{{c.ten_mon}}</a></h5>
                                <h6><strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>
                             </td>
-                            <td class="price"><span>{{c.gia}}</span></td>
+                            <td class="price"><span>{{(c.gia | currency: " ").replace('.00',' ')}}</span></td>
                             <td class="product_quantity"> <input #inp  min="1" max="100" (change)="addQty(c,inp.value)" [value]="c.quantity" type="number"></td>
                             <td class="price"><span>{{(c.money | currency: " ").replace('.00',' ')}}</span></td>
-                            <td class="cart_delete"><a class="cart_quantity_delete" (click)="_cart.deleteItem(c.ma_mon)"><i class="fa fa-times"></i></a></td>
+                            <td class="cart_delete"><a class="cart_quantity_delete" (click)="_cart.deleteItem(c.ma_mon)"><i class="mdi mdi-delete-forever"></i></a></td>
                          </tr>
-                      </tbody>
+                     </tbody>
                       <tfoot>
                          <tr>
                             <td colspan="1"></td>

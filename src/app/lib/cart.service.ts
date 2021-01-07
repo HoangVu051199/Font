@@ -11,27 +11,27 @@ export class CartService {
     if (!local_storage) {
       local_storage = [];
     }
-    this.itemsSubject.next(local_storage); 
+    this.itemsSubject.next(local_storage);
   }
-  
-  addToCart(item) {
-    item.quantity = 1;
+
+  addToCart(monan) {
+    monan.quantity = 1;
     let local_storage:any;
     if (localStorage.getItem('cart') == null) {
-      local_storage = [item];
+      local_storage = [monan];
     } else {
       local_storage = JSON.parse(localStorage.getItem('cart'));
       let ok = true;
       for (let x of local_storage) {
-        if (x.ma_mon == item.ma_mon) {
+        if (x.ma_mon == monan.ma_mon) {
           x.quantity += 1;
           ok = false;
           break;
         }
       }
       if(ok){
-        local_storage.push(item); 
-      } 
+        local_storage.push(monan);
+      }
     }
     localStorage.setItem('cart', JSON.stringify(local_storage));
     this.itemsSubject.next(local_storage);
@@ -51,11 +51,11 @@ export class CartService {
     this.itemsSubject.next(local_storage);
   }
 
-  addQty(item) {
+  addQty(monan) {
     let local_storage = JSON.parse(localStorage.getItem('cart'));
     for (let x of local_storage) {
-      if (x.ma_mon == item.ma_mon) {
-        x.quantity = item.quantity;
+      if (x.ma_mon == monan.ma_mon) {
+        x.quantity = monan.quantity;
         break;
       }
     }

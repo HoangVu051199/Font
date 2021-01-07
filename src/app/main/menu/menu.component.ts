@@ -18,24 +18,20 @@ export class MenuComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refserProCategory1();
-   //this.refserProCategory();
     this.refserLoaiList();
+    this.refserMonanList();
   }
-  refserProCategory1()
-  {
-    this.monan=[];
-    this._route.params.subscribe(params => {
-      let id = params['id'];
-      this._api.get('/api/Monan/get-by-loai/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((data: any) => {
-        this.monan = data;
-      });
-    });
-  }
+
   refserLoaiList(){
     this._api.get("/api/loai/get-all").subscribe(data =>{
-      this.loai=data;
-    })
+      this.loai= data;
+    });
+  }
+
+  refserMonanList(){
+    this._api.get("/api/monan/get-all").subscribe(data =>{
+      this.monan= data;
+    });
   }
 }
 

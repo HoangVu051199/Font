@@ -1,8 +1,7 @@
-import { Component, OnInit, Injector } from '@angular/core';
-import { FormBuilder} from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
-import { BaseComponent } from 'src/app/lib/base-component';
-import { CartService } from 'src/app/lib/cart.service';
+import {Component, Injector, OnInit} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {BaseComponent} from '../../lib/base-component';
+import {CartService} from '../../lib/cart.service';
 
 
 @Component({
@@ -13,8 +12,7 @@ import { CartService } from 'src/app/lib/cart.service';
 export class ProductComponent extends BaseComponent implements OnInit{
 
   public monans: any;
-  public listCart: any;
-  public item: any;
+  public monan: any;
 
   constructor(private fb: FormBuilder, injector: Injector, private service: CartService) {
     super(injector);
@@ -22,6 +20,7 @@ export class ProductComponent extends BaseComponent implements OnInit{
 
   ngOnInit(): void {
     this.refserMonanList();
+    this.refserProMonanList();
   }
 
   refserMonanList(){
@@ -29,31 +28,14 @@ export class ProductComponent extends BaseComponent implements OnInit{
       this.monans = data;
     });
   }
+  refserProMonanList(){
+    this._api.get('/api/monan/get-pro-all').subscribe(data => {
+      this.monan = data;
+    });
+  }
 
-  addCart(monan) {
-
-    this.listCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-    if (this.listCart.length)
-    {
-      this.listCart.map( (vl) => {
-        if (vl.ma_mon == monan.ma_mon)
-          {
-          vl.size ++
-        }
-
-        else {
-          this.listCart.push(monan);
-        }
-
-        // vl.size * vl.price
-
-        return vl
-      })
-    } else {
-      this.listCart.push(monan);
-    }
-
-    localStorage.setItem('cart', JSON.stringify(this.listCart));
-    alert('Thêm thành công');
+  addToCart(monan) {
+    this._cart.addToCart(monan);
+    alert('Thêm thành công!');
   }
 }
