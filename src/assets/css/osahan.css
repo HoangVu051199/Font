@@ -5,21 +5,21 @@ Author URI: https://themeforest.net/user/askbootstrap
 Version: 1.3
 */
 /*
-	-- Body 
-	-- Top Menu 
-	-- Link Menu 
-	-- Category Slider 
-	-- Main Slider 
-	-- Featured Product 
-	-- Featured Box 
-	-- Footer 
-	-- Cart Sidebar 
-	-- Shop Filters 
-	-- Shop Detail 
-	-- Cart Page 
-	-- Checkout Page 
-	-- Login Modal 
-	-- My Account 
+	-- Body
+	-- Top Menu
+	-- Link Menu
+	-- Category Slider
+	-- Main Slider
+	-- Featured Product
+	-- Featured Box
+	-- Footer
+	-- Cart Sidebar
+	-- Shop Filters
+	-- Shop Detail
+	-- Cart Page
+	-- Checkout Page
+	-- Login Modal
+	-- My Account
 	-- About Page
 	-- Blog Page
 	-- Mobile Media
@@ -292,7 +292,7 @@ a:focus {
     border-style: none solid none none;
     border-width: medium 1px medium medium;
     height: 38px;
- 
+
 }
 .top-categories-search .form-control-select, .top-categories-search .select2-container{
 	 width: 168px !important;
@@ -666,6 +666,7 @@ body.toggled::after {
     text-align: left;
     text-decoration: none;
     width: 100%;
+    margin-left: 15px;
 }
 .shop-filters .card-header .btn .mdi {
     position: absolute;
@@ -1081,7 +1082,7 @@ label {
 }
 /* Mobile Media */
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) { 
+@media (max-width: 575.98px) {
 	.carousel-slider-main .owl-prev, .carousel-slider-main .owl-next {
 		top: 34%;
 	}
@@ -1199,7 +1200,7 @@ label {
 	}
 }
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) { 
+@media (min-width: 576px) and (max-width: 767.98px) {
 	.carousel-slider-main .owl-prev, .carousel-slider-main .owl-next {
 		top: 40%;
 	}
@@ -1305,7 +1306,7 @@ label {
 	}
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) { 
+@media (min-width: 768px) and (max-width: 991.98px) {
 	.location-top {
 		display:none;
 	}
@@ -1397,7 +1398,7 @@ label {
 	}
 }
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) { 
+@media (min-width: 992px) and (max-width: 1199.98px) {
 	.osahan-menu-2 .nav-link {
 		font-size: 13px;
 		padding: 13px 10px !important;

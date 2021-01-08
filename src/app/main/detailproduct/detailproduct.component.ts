@@ -16,6 +16,7 @@ export class DetailproductComponent extends BaseComponent implements OnInit {
   item: any;
   listCart: any;
   apiurl = environment.apiurl;
+  monan: any;
 
   constructor(
     private fb: FormBuilder,
@@ -32,31 +33,24 @@ export class DetailproductComponent extends BaseComponent implements OnInit {
       let id = params.id;
       this.http.get(this.apiurl + '/api/monan/get-by-id/' + id).subscribe(res => {
         this.item = res;
-      })
+      });
     });
-
+    this.refserProCategory1();
   }
 
-  addCart() {
-    this.listCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+  refserProCategory1()
+  {
+    this.monan=[];
+    this._route.params.subscribe(params => {
+      let id = params['id'];
+      this._api.get('/api/Monan/get-by-loai/'+id).pipe(takeUntil(this.unsubscribe)).subscribe((data: any) => {
+        this.monan = data;
+      });
+    });
+  }
 
-    if (this.listCart.length) {
-      this.listCart.map((vl) => {
-        if (vl.ma_mon == this.item.ma_mon) {
-          vl.size++
-        } else {
-          this.listCart.push(this.item);
-        }
-
-        return vl
-      })
-    } else {
-      this.listCart.push(this.item);
-    }
-
-    // console.log(11, this.listCart);
-
-    localStorage.setItem('cart', JSON.stringify(this.listCart));
-    alert('thành công');
+  addToCart(monan) {
+    this._cart.addToCart(monan);
+    alert('Thêm thành công!');
   }
 }

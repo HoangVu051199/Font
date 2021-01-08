@@ -13,14 +13,14 @@
                       <img class="img-fluid" src="{{item.hinh_anh}}" alt="">
                       <span class="veg text-success mdi mdi-circle"></span>
                    </div>
-                   <div class="product-body">
+                   <div class="product-body" style="margin-bottom: 10px; margin-left: 40px;">
                      <a [routerLink]="['/detail',item.ma_mon]">
                       <h5>{{item.ten_mon}}</h5>
                      </a>
                    </div>
                    <div class="product-footer">
-                      <button type="button" [routerLink]="['/']"  (click)="addToCart(item)" class="btn btn-secondary btn-sm float-right"><i class="mdi mdi-cart-outline"></i> Add To Cart</button>
                       <p class="offer-price mb-0">{{(item.gia | currency: '').replace('.00','')}} </p>
+                     <button type="button" [routerLink]="['/']"  (click)="addToCart(item)" class="btn btn-secondary btn-sm " style="margin-left: 38px;"><i class="mdi mdi-cart-outline"></i> Add To Cart</button>
                    </div>
              </div>
           </div>
@@ -49,19 +49,17 @@
        <div class="owl-carousel owl-carousel-featured">
           <div class="item" *ngFor="let m of monan">
              <div class="product">
-                <a href="single.html">
                    <div class="product-header">
-                      <img class="img-fluid" src="{{m.img}}" alt="">
+                      <img class="img-fluid" src="{{m.hinh_anh}}" alt="">
                       <span class="veg text-success mdi mdi-circle"></span>
                    </div>
-                   <div class="product-body">
+                   <div class="product-body" style="margin-bottom: 10px; margin-left: 35px;">
                       <h5>{{m.ten_mon}}</h5>
                    </div>
-                   <div class="product-footer">
-                      <button type="button" class="btn btn-secondary btn-sm float-right"><i class="mdi mdi-cart-outline"></i> Add To Cart</button>
+                   <div class="product-footer" >
                       <p class="offer-price mb-0">{{(m.gia_km | currency : "").replace('.00','')}}</p>
+                     <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 35px;"><i class="mdi mdi-cart-outline"></i> Add To Cart</button>
                    </div>
-                </a>
              </div>
           </div>
        </div>
