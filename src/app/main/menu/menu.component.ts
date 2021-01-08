@@ -12,7 +12,8 @@ export class MenuComponent extends BaseComponent implements OnInit {
 
   public monan:any=[];
   loai: any;
-  ten_loai:any;
+  p: number = 1;
+
   constructor(injector: Injector) {
     super(injector);
   }

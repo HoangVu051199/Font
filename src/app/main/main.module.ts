@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
 import { CategoryComponent } from './category/category.component';
+import {NgxPaginationModule} from "ngx-pagination";
 export const mainRoutes: Routes = [
   {
     path: '',
@@ -75,7 +76,7 @@ export const mainRoutes: Routes = [
     CartComponent,
     CategoryComponent
   ],
-  imports: [SharedModule, CommonModule, RouterModule.forChild(mainRoutes)],
+  imports: [SharedModule, CommonModule, RouterModule.forChild(mainRoutes), NgxPaginationModule],
 })
 export class MainModule {}
 

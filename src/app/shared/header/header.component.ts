@@ -10,12 +10,15 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
   items:any;
   total:any;
+  aaaa: any;
   constructor(injector: Injector) {
     super(injector);
   }
 
   ngOnInit(): void {
     this._cart.items.subscribe((res) => {
+      this.aaaa = res.length;
+      console.log(res.length);
       this.items = res;
       this.total = 0;
       for(let x of this.items){
